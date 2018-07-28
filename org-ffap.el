@@ -36,6 +36,14 @@
 ;; variables
 ;;
 
+(defcustom org-ffap-begin-header "#+source-bgn:"
+  "Begin header for org-ffap."
+  :group 'org-ffap)
+
+(defcustom org-ffap-end-header "#+source-end:"
+  "End header for org-ffap."
+  :group 'org-ffap)
+
 (defvar org-ffap-data nil
   "Store point information at killing.
 Org-ffap internal data.  Should not Change.")
@@ -72,11 +80,13 @@ This function will run before `yank'(&optional ARG)"
       (when (eq env 'src-block)
         (save-excursion
           (goto-char (plist-get plist :begin))
-          (insert (format "#+source-bgn: %s:%s\n"
+          (insert (format "%s %s:%s\n"
+                          (org-ffap-begin-header)
                           (plist-get store :file-name)
                           (plist-get store :begin-line)
                           ))
-          (insert (format "#+source-end: %s:%s\n"
+          (insert (format "%s %s:%s\n"
+                          (org-ffap-end-header)
                           (plist-get store :file-name)
                           (plist-get store :end-line))))))))
 
