@@ -87,8 +87,7 @@ This function will run before `yank'(&optional ARG)"
           (insert (format "%s %s:%s\n"
                           org-ffap-begin-header
                           (plist-get store :file-name)
-                          (plist-get store :begin-line)
-                          ))
+                          (plist-get store :begin-line)))
           (insert (format "%s %s:%s\n"
                           org-ffap-end-header
                           (plist-get store :file-name)
