@@ -27,6 +27,10 @@
 (require 'org)
 (require 'org-element)
 
+(defgroup org-ffap nil
+  "Add ffap link to src block in org-mode."
+  :group 'org)
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;
 ;; variables
