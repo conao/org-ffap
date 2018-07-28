@@ -85,12 +85,12 @@ This function will run before `yank'(&optional ARG)"
         (save-excursion
           (goto-char (plist-get plist :begin))
           (insert (format "%s %s:%s\n"
-                          (org-ffap-begin-header)
+                          org-ffap-begin-header
                           (plist-get store :file-name)
                           (plist-get store :begin-line)
                           ))
           (insert (format "%s %s:%s\n"
-                          (org-ffap-end-header)
+                          org-ffap-end-header
                           (plist-get store :file-name)
                           (plist-get store :end-line))))))))
 
