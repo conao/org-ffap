@@ -44,6 +44,10 @@
   "End header for org-ffap."
   :group 'org-ffap)
 
+(defcustom org-ffap-enable-env-alist '(src-block example-block)
+  "Enable org-ffap in those environment blocks."
+  :group 'org-ffap)
+
 (defvar org-ffap-data nil
   "Store point information at killing.
 Org-ffap internal data.  Should not Change.")
@@ -77,7 +81,7 @@ This function will run before `yank'(&optional ARG)"
            (env   (car type))
            (plist (cadr type))
            (store (cdr org-ffap-data)))
-      (when (eq env 'src-block)
+      (when (memq env org-ffap-enable-env-alist)
         (save-excursion
           (goto-char (plist-get plist :begin))
           (insert (format "%s %s:%s\n"
